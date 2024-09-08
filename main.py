@@ -3,6 +3,9 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+
+
 if __name__ == "__main__":
 
-    uvicorn.run("main:app", port=2312, log_level="debug")
+
+    uvicorn.run("main:app", port=42069, log_level="debug")
