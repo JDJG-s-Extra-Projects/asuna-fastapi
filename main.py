@@ -141,12 +141,6 @@ async def missing_image_type():
     return JSONResponse({"error": "The file category is required"})
 
 
-# 404 response return html
-# "<div style='text-align:center'><h3><a href='./'>Go Home</a><br/>4owo4 page not found</div>"
-# for any url that does not exist on here.
-# this will be displayed with return HTMLResponse
-
-
 # 404 response for undefined routes
 @app.get("/{full_path:path}", include_in_schema=False)
 async def catch_all(full_path: str):
