@@ -47,7 +47,6 @@ async def welcome():
     return "Welcome to the Asuna fastapi version."
     # placeholder
 
-
 @app.get("/usage")
 async def get_usage():
 
@@ -78,6 +77,24 @@ async def get_random_image(image_type: str):
     # https://mystb.in/a56e9985c52d7bb3e1?lines=F1-L28
 
     # use fileResponse with the path to show this.
+
+"""
+get_endpoints could be better but it does do what i need it to do.
+
+The problem is that I have no cached version of directories
+filenames and such would probaly be okay being cached too
+but I am thinking what if some random person
+decides to add another folder and images to that folder?
+hence why maybe a utility to generate something might be useful
+and it could also make sure they are direct images like
+/image.jpg
+rather than /lol/image.jpg
+
+basically we need to see if the files actually contain contents within the main folder
+/images/{whatever} 
+is what we are looking for
+not /images/{whatever}/{sub}
+"""
 
 
 @app.get("/api/{image_type}")
