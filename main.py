@@ -71,6 +71,7 @@ async def get_random_image(image_type: str):
 
     if not image_path.exists():
         return JSONResponse({"error": "Picture category not found or there are no images in this category"})
+        #TODO: ADD status code that makes sense.
 
     # if it exists make sure the image_type is within the images folder to prevent fileserver injection
     # list images after this.
@@ -115,6 +116,7 @@ async def get_random_image_info(image_type: str):
 
     if not image_path.exists():
         return JSONResponse({"error": "Picture category not found or there are no images in this category"})
+        # TODO: add status code that makes sense
 
     # if it exists make sure the image_type is within the images folder to prevent fileserver injection
     # list images after this.
@@ -153,9 +155,11 @@ async def serve_image(image_type: typing.Optional[str] = None, image_file: typin
 
     if image_type is None:
         return JSONResponse({"error": "The file category is required"})
+        # TODO: add status code that makes sense
 
     if file is None:
         return JSONResponse({"error": "The file name is required"})
+        # TODO: add status code that makes sense
 
     image_type = image_type.lower()
 
@@ -176,6 +180,7 @@ async def serve_image(image_type: typing.Optional[str] = None, image_file: typin
 @app.get("/images")
 async def missing_image_type():
     return JSONResponse({"error": "The file category is required"})
+    # TODO: add status code that makes sense
 
 
 # 404 response for undefined routes
