@@ -8,10 +8,11 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.10"
-fastapi = ">=0.112.0"
+fastapi = ">=0.114.0"
 python-dotenv = ">=1.0.1"
-uvicorn = ">=0.30.5"
+uvicorn = ">=0.30.6"
 asqlite = {git = "https://github.com/Rapptz/asqlite"}
+
 
 [build-system]
 requires = ["poetry-core"]
