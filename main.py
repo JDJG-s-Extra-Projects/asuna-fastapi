@@ -176,16 +176,13 @@ async def missing_image_type():
 
 
 # 404 response for undefined routes
+# tested locally on pc and this works also includes_in_schema hides this route.
 @app.get("/{full_path:path}", include_in_schema=False)
 async def catch_all(full_path: str):
     return HTMLResponse(
         content="<div style='text-align:center'><h3><a href='/'>Go Home</a><br/>4owo4 page not found</div>",
         status_code=404,
     )
-
-
-# tested locally on pc and this works also includes_in_schema hides this route.
-
 
 if __name__ == "__main__":
 
