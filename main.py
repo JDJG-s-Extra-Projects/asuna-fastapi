@@ -68,7 +68,7 @@ async def get_random_image(image_type: str):
 
     # in our version I am going to make a check to make sure the image_type exists first.
 
-    image_path = pathlib.Path(str(images_directory) + "/{image_type}")
+    image_path = images_directory / image_type
 
     if not image_path.exists():
         return JSONResponse({"error": "Picture category not found or there are no images in this category"})
@@ -113,7 +113,7 @@ async def get_random_image_info(image_type: str):
     image_type = image_type.lower()
     images = []
 
-    image_path = pathlib.Path(str(images_directory) + "/{image_type}")
+    image_path = images_directory / image_type
 
     if not image_path.exists():
         return JSONResponse({"error": "Picture category not found or there are no images in this category"})
