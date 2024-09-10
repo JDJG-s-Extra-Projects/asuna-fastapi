@@ -159,6 +159,9 @@ async def serve_image(image_type: typing.Optional[str] = None, image_file: typin
 
     image_type = image_type.lower()
 
+    # better name than just image_file.
+    # we need to make sure f"images/{image_type}/image_file}" exist
+
     # check if file exists with pathlib
     # if file does not exist:
     # {"error": "File not found"}
