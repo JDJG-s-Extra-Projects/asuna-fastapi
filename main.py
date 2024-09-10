@@ -27,7 +27,6 @@ images_directory = pathlib.Path(str(current_directory) + "/images")
 # JSONResponse -> used for most routes.
 
 
-
 @app.get("/api")
 async def get_endpoints():
 
