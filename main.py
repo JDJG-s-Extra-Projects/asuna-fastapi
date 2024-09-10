@@ -107,6 +107,7 @@ async def missing_image_type():
 # 404 response return html
 # "<div style='text-align:center'><h3><a href='./'>Go Home</a><br/>4owo4 page not found</div>"
 # for any url that does not exist on here.
+# this will be displayed with return HTMLResponse
 
 
 if __name__ == "__main__":
