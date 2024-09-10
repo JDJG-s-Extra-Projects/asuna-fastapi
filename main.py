@@ -142,17 +142,12 @@ async def get_endpoints():
         if image_type_dir.is_dir():
             images = [img for img in image_type_dir.iterdir() if img.is_file()]
             image_count = len(images)
-            endpoints[image_type_dir.name] = {
-                "url": f"/api/{image_type_dir.name}",
-                "imageCount": image_count
-            }
+            endpoints[image_type_dir.name] = {"url": f"/api/{image_type_dir.name}", "imageCount": image_count}
             total_images += image_count
 
-    return JSONResponse({
-        "allEndpoints": list(endpoints.keys()),
-        "endpointInfo": endpoints,
-        "totalImages": total_images
-    })
+    return JSONResponse(
+        {"allEndpoints": list(endpoints.keys()), "endpointInfo": endpoints, "totalImages": total_images}
+    )
 
 
 @app.get("/images/{image_type}/image/{image_file}")
