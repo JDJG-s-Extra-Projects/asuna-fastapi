@@ -24,6 +24,7 @@ images_directory = pathlib.Path(str(current_directory) + "/images")
 # HTMLResponse -> used for general response.
 # JSONResponse -> used for most routes.
 
+
 @app.get("/api")
 async def get_endpoints():
 
@@ -35,19 +36,13 @@ async def get_endpoints():
     for path in endpoints:
         category_images = [path for path in endpoint.iterdir() if path.is_file()]
 
-        response[path.name] = {
-            "url": f"{base_url}api/{endpoint.name}/",
-            "imageCount": len(category_images)
-        }
+        response[path.name] = {"url": f"{base_url}api/{endpoint.name}/", "imageCount": len(category_images)}
         total_images += len(category_images)
-    
-    return JSONResponse({
-        "allEndpoints": endpoints,
-        "endpointInfo": response,
-        "totalImages": total_images
-    })
 
-# api/:type 
+    return JSONResponse({"allEndpoints": endpoints, "endpointInfo": response, "totalImages": total_images})
+
+
+# api/:type
 # convert types to lowercase
 # images list
 # tries to read the images and type of the folder if it fails with in an invalid error it then uses {error: "Picture category not found or there are no images in this category"}
