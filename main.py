@@ -41,10 +41,12 @@ images_directory = pathlib.Path(str(current_directory) + "/images")
 with open("example_usage.json", "r") as f:
     usage_data = json.load(f)
 
+
 @app.get("/")
 async def welcome():
     return "Welcome to the Asuna fastapi version."
     # placeholder
+
 
 @app.get("/usage")
 async def get_usage():
