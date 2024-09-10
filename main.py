@@ -184,6 +184,7 @@ async def catch_all(full_path: str):
         status_code=404,
     )
 
+
 if __name__ == "__main__":
 
     uvicorn.run("main:app", port=42069, log_level="debug")
