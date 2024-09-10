@@ -68,7 +68,9 @@ async def get_random_image(image_type: str):
 
     # in our version I am going to make a check to make sure the image_type exists first.
 
-    image_path = images_directory / image_type
+    # TODO: Clean up image_type or codeql will scream.
+    # image_path = images_directory / image_type
+    # TODO: reimplement image_path
 
     if not image_path.exists():
         return JSONResponse({"error": "Picture category not found or there are no images in this category"})
@@ -117,7 +119,9 @@ async def get_random_image_info(image_type: str):
     image_type = image_type.lower()
     images = []
 
-    image_path = images_directory / image_type
+    # TODO: Clean up image_type or codeql will scream.
+    # image_path = images_directory / image_type
+    # TODO: reimplement image_path
 
     # TODO: make sure image_type cannot be a full path rather just a normal str.
 
