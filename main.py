@@ -33,8 +33,8 @@ def get_particular_data(table):
 # data: typehint = Depends(get_particular_data("objection")
 
 
-current_directory = pathlib.Path(__file__).absolute().parent
-images_directory = pathlib.Path(str(current_directory) + "/images")
+current_directory = pathlib.Path(__file__).parent.resolve()
+images_directory = current_directory / "images"
 
 # possible better spot for it may exist.
 # possibly write usage.json to a database instead for speed reasons.
@@ -134,21 +134,25 @@ async def get_random_image_info(image_type: str):
 
 @app.get("/api")
 async def get_endpoints():
-
+    endpoints = {}
     total_images = 0
-    response = {}
 
-    endpoints = [path for path in path.iterdir() if path.is_dir()]
+    # Iterate over directories inside 'images'
+    for image_type_dir in images_directory.iterdir():
+        if image_type_dir.is_dir():
+            images = [img for img in image_type_dir.iterdir() if img.is_file()]
+            image_count = len(images)
+            endpoints[image_type_dir.name] = {
+                "url": f"/api/{image_type_dir.name}",
+                "imageCount": image_count
+            }
+            total_images += image_count
 
-    for path in endpoints:
-        category_images = [path for path in endpoint.iterdir() if path.is_file()]
-
-        response[path.name] = {"url": f"{base_url}api/{endpoint.name}/", "imageCount": len(category_images)}
-        total_images += len(category_images)
-
-    return JSONResponse({"allEndpoints": endpoints, "endpointInfo": response, "totalImages": total_images})
-
-    # could definetly use a rewrite to look better and cleaner.
+    return JSONResponse({
+        "allEndpoints": list(endpoints.keys()),
+        "endpointInfo": endpoints,
+        "totalImages": total_images
+    })
 
 
 @app.get("/images/{image_type}/image/{image_file}")
@@ -163,6 +167,9 @@ async def serve_image(image_type: typing.Optional[str] = None, image_file: typin
         # TODO: add status code that makes sense
 
     image_type = image_type.lower()
+
+    # possible useful for handling the filename
+    # https://mystb.in/f816711cc955a0eb81?lines=F1-L89
 
     # better name than just image_file.
     # we need to make sure f"images/{image_type}/image_file}" exist
