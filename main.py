@@ -1,3 +1,4 @@
+import json
 import pathlib
 import typing
 from contextlib import asynccontextmanager
@@ -37,9 +38,14 @@ images_directory = pathlib.Path(str(current_directory) + "/images")
 # possibly write usage.json to a database instead for speed reasons.
 
 
+with open("example_usage.json", "r") as f:
+    usage_data = json.load(f)
+
 @app.get("/usage")
 async def get_usage():
-    return
+
+    # load example_usage.json for rn
+    return JSONResponse(usage_data)
     # use some lifetime object example jdjgapi to in this case grab the usage data
 
 
