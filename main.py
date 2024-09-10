@@ -4,6 +4,7 @@ import random
 import typing
 from contextlib import asynccontextmanager
 
+import asqlite
 import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import FileResponse, JSONResponse, HTMLResponse
