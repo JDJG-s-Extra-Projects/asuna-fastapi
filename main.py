@@ -47,6 +47,7 @@ async def welcome():
     return "Welcome to the Asuna fastapi version."
     # placeholder
 
+
 @app.get("/usage")
 async def get_usage():
 
@@ -77,6 +78,7 @@ async def get_random_image(image_type: str):
     # https://mystb.in/a56e9985c52d7bb3e1?lines=F1-L28
 
     # use fileResponse with the path to show this.
+
 
 """
 get_endpoints could be better but it does do what i need it to do.
