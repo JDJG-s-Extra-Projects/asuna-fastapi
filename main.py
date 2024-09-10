@@ -41,6 +41,7 @@ images_directory = pathlib.Path(str(current_directory) + "/images")
 with open("example_usage.json", "r") as f:
     usage_data = json.load(f)
 
+
 @app.get("/usage")
 async def get_usage():
 
