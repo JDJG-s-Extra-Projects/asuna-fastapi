@@ -195,6 +195,6 @@ async def catch_all(full_path: str):
 
 
 if __name__ == "__main__":
-
+    base_url = "http://127.0.0.1:42069"  # Define your base URL here
     uvicorn.run("main:app", port=42069, log_level="debug")
     print(f"Running Web Server on: {base_url}")
