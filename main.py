@@ -155,6 +155,7 @@ async def catch_all(full_path: str):
         status_code=404,
     )
 
+
 # tested locally on pc and this works also includes_in_schema hides this route.
 
 
