@@ -10,6 +10,8 @@ current_directory = pathlib.Path(__file__).absolute().parent
 images_directory = pathlib.Path(str(current_directory) + "/images")
 # possible better spot for it may exist.
 
+# possibly write usage.json to a database instead for speed reasons.
+
 # '/api/:type': 'random image from {type/folder}' asuna.ga/api/images/hug/image/hug01.gif
 #'/api/: 'list of folders/types' {url: "asuna.ga/api/images/hug", imageCount: 20} //loop through each folder and count contents
 # '/images/:type?/image/:file?': 'specific image from specific fodler' imageFile
@@ -23,6 +25,7 @@ images_directory = pathlib.Path(str(current_directory) + "/images")
 # return FileResponse(some_file_path) can be used for the image returning on the proper route.
 # HTMLResponse -> used for general response.
 # JSONResponse -> used for most routes.
+
 
 
 @app.get("/api")
