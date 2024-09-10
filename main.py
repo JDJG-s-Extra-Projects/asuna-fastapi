@@ -146,12 +146,13 @@ async def missing_image_type():
 # for any url that does not exist on here.
 # this will be displayed with return HTMLResponse
 
+
 # 404 response for undefined routes
 @app.get("/{full_path:path}", include_in_schema=False)
 async def catch_all(full_path: str):
     return HTMLResponse(
         content="<div style='text-align:center'><h3><a href='/'>Go Home</a><br/>4owo4 page not found</div>",
-        status_code=404
+        status_code=404,
     )
 
 
