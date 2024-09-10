@@ -1,5 +1,6 @@
 import json
 import pathlib
+import random
 import typing
 from contextlib import asynccontextmanager
 
@@ -56,10 +57,13 @@ async def get_usage():
     # use some lifetime object example jdjgapi to in this case grab the usage data
 
 
-@app.get("/api/{image_type}")
+@app.get("/api/random/{image_type}")
 async def get_random_image(image_type: str):
     image_type = image_type.lower()
     images = []
+
+    # https://mystb.in/a56e9985c52d7bb3e1?lines=F1-L24 
+    # I forgot to add random to the route
 
     # in our version I am going to make a check to make sure the image_type exists first.
 
@@ -70,12 +74,15 @@ async def get_random_image(image_type: str):
 
     # if it exists make sure the image_type is within the images folder to prevent fileserver injection
     # list images after this.
+    # also make sure folder is not empty
     # add to usage like f"{image_type}" or just image_type.
     # ie example neko
     # ./images/{type}/{random_image}"
 
     # an online accquitance decided to make this ai version for some reason
     # https://mystb.in/a56e9985c52d7bb3e1?lines=F1-L28
+
+    random_image = random.choice(images)
 
     # use fileResponse with the path to show this.
 
@@ -113,6 +120,9 @@ async def get_random_image_info(image_type: str):
     # list images after this.
     # add to usage like f"{image_type-api}" or just image_type.
     # i.e. example neko-api
+
+    random_image = random.choice(images)
+
     # {"fileName": random_image, "url": f"{url}/images/{type}/image/{random_image}"}
 
     # an online accquitance decided to make this ai version for some reason
