@@ -12,6 +12,7 @@ images_directory = pathlib.Path(str(current_directory) + "/images")
 # possible better spot for it may exist.
 # possibly write usage.json to a database instead for speed reasons.
 
+
 @app.get("/api")
 async def get_endpoints():
 
