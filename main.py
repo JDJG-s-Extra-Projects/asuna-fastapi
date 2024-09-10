@@ -12,10 +12,12 @@ images_directory = pathlib.Path(str(current_directory) + "/images")
 # possible better spot for it may exist.
 # possibly write usage.json to a database instead for speed reasons.
 
+
 @app.get("/usage")
 async def get_usage():
     return
     # use some lifetime object example jdjgapi to in this case grab the usage data
+
 
 @app.get("/api/{image_type}")
 async def get_random_image(image_type: str):
@@ -35,7 +37,7 @@ async def get_random_image(image_type: str):
     # ie example neko
     # ./images/{type}/{random_image}"
 
-    # an online accquitance decided to make this ai version for some reason 
+    # an online accquitance decided to make this ai version for some reason
     # https://mystb.in/a56e9985c52d7bb3e1?lines=F1-L28
 
 
@@ -52,10 +54,10 @@ async def get_random_image_info(image_type: str):
     # if it exists make sure the image_type is within the images folder to prevent fileserver injection
     # list images after this.
     # add to usage like f"{image_type-api}" or just image_type.
-    # i.e. example neko-api 
+    # i.e. example neko-api
     # {"fileName": random_image, "url": f"{url}/images/{type}/image/{random_image}"}
 
-    # an online accquitance decided to make this ai version for some reason 
+    # an online accquitance decided to make this ai version for some reason
     # https://mystb.in/a56e9985c52d7bb3e1?lines=F1-L60
 
 
@@ -75,6 +77,7 @@ async def get_endpoints():
 
     return JSONResponse({"allEndpoints": endpoints, "endpointInfo": response, "totalImages": total_images})
 
+
 @app.get("/images/{image_type}/image/{image_file}")
 async def serve_image(image_type: typing.Optional[str] = None, image_file: typing.Optional[str] = None):
 
@@ -87,7 +90,7 @@ async def serve_image(image_type: typing.Optional[str] = None, image_file: typin
     image_type = image_type.lower()
 
     # check if file exists with pathlib
-    # if file does not exist: 
+    # if file does not exist:
     # {"error": "File not found"}
 
     # usage normal of {image_type} like neko
@@ -95,9 +98,11 @@ async def serve_image(image_type: typing.Optional[str] = None, image_file: typin
     # an online aqquitance sent me this file made by ai:
     # https://mystb.in/a56e9985c52d7bb3e1?lines=F1-L94
 
+
 @app.get("/images")
 async def missing_image_type():
     return JSONResponse({"error": "The file category is required"})
+
 
 # 404 response return html
 # "<div style='text-align:center'><h3><a href='./'>Go Home</a><br/>4owo4 page not found</div>"
