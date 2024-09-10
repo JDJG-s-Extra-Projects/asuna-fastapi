@@ -71,7 +71,7 @@ async def get_random_image(image_type: str):
 
     if not image_path.exists():
         return JSONResponse({"error": "Picture category not found or there are no images in this category"})
-        #TODO: ADD status code that makes sense.
+        # TODO: ADD status code that makes sense.
 
     # if it exists make sure the image_type is within the images folder to prevent fileserver injection
     # list images after this.
