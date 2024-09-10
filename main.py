@@ -62,7 +62,7 @@ async def get_random_image(image_type: str):
     image_type = image_type.lower()
     images = []
 
-    # https://mystb.in/a56e9985c52d7bb3e1?lines=F1-L24 
+    # https://mystb.in/a56e9985c52d7bb3e1?lines=F1-L24
     # I forgot to add random to the route
 
     # in our version I am going to make a check to make sure the image_type exists first.
