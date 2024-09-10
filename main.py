@@ -73,10 +73,14 @@ async def get_random_image(image_type: str):
     if not image_path.exists():
         return JSONResponse({"error": "Picture category not found or there are no images in this category"})
         # TODO: ADD status code that makes sense.
+        # TODO: make sure it checks the amount of items in images (we want it to not be None)
 
-    # if it exists make sure the image_type is within the images folder to prevent fileserver injection
-    # list images after this.
-    # also make sure folder is not empty
+    # TODO: Make sure the file we want is actually in the images/{folder}/filename.ext (like this) 
+    # TODO: After we are sure the files are safe then we can do random.choice on images i.e. listing images we want with iterdir and is_file()
+
+    # add to usage like f"{image_type-api}" or just image_type.
+    # i.e. example neko-api
+
     # add to usage like f"{image_type}" or just image_type.
     # ie example neko
     # ./images/{type}/{random_image}"
@@ -115,12 +119,16 @@ async def get_random_image_info(image_type: str):
 
     image_path = images_directory / image_type
 
+    # TODO: make sure image_type cannot be a full path rather just a normal str.
+
     if not image_path.exists():
         return JSONResponse({"error": "Picture category not found or there are no images in this category"})
         # TODO: add status code that makes sense
+        # TODO: make sure it checks the amount of items in images
 
-    # if it exists make sure the image_type is within the images folder to prevent fileserver injection
-    # list images after this.
+    # TODO: Make sure the file we want is actually in the images/{folder}/filename.ext (like this) 
+    # TODO: After we are sure the files are safe then we can do random.choice on images i.e. listing images we want with iterdir and is_file()
+
     # add to usage like f"{image_type-api}" or just image_type.
     # i.e. example neko-api
 
