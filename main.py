@@ -1,11 +1,30 @@
 import pathlib
 import typing
+from contextlib import asynccontextmanager
 
 import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import FileResponse, JSONResponse, HTMLResponse
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    async with asqlite.create_pool("usage.db") as app.pool:
+        yield
+
 app = FastAPI()
+# do lifespan=lifespan when ready.
+
+def get_particular_data(table):
+    async def wrapper(conn=Depends(get_conn)):
+        async with conn.cursor() as cursor:
+            result = await cursor.execute(f"SELECT * FROM {table}")
+            return [x[0] for x in await result.fetchall()]
+
+    return wrapper
+
+# modify this table value
+# data: typehint = Depends(get_particular_data("objection")
+
 
 current_directory = pathlib.Path(__file__).absolute().parent
 images_directory = pathlib.Path(str(current_directory) + "/images")
