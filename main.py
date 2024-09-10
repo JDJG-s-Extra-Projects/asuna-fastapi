@@ -6,13 +6,16 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import FileResponse, JSONResponse, HTMLResponse
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     async with asqlite.create_pool("usage.db") as app.pool:
         yield
 
+
 app = FastAPI()
 # do lifespan=lifespan when ready.
+
 
 def get_particular_data(table):
     async def wrapper(conn=Depends(get_conn)):
@@ -21,6 +24,7 @@ def get_particular_data(table):
             return [x[0] for x in await result.fetchall()]
 
     return wrapper
+
 
 # modify this table value
 # data: typehint = Depends(get_particular_data("objection")
