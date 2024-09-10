@@ -75,7 +75,7 @@ async def get_random_image(image_type: str):
         # TODO: ADD status code that makes sense.
         # TODO: make sure it checks the amount of items in images (we want it to not be None)
 
-    # TODO: Make sure the file we want is actually in the images/{folder}/filename.ext (like this) 
+    # TODO: Make sure the file we want is actually in the images/{folder}/filename.ext (like this)
     # TODO: After we are sure the files are safe then we can do random.choice on images i.e. listing images we want with iterdir and is_file()
 
     # add to usage like f"{image_type-api}" or just image_type.
@@ -126,7 +126,7 @@ async def get_random_image_info(image_type: str):
         # TODO: add status code that makes sense
         # TODO: make sure it checks the amount of items in images
 
-    # TODO: Make sure the file we want is actually in the images/{folder}/filename.ext (like this) 
+    # TODO: Make sure the file we want is actually in the images/{folder}/filename.ext (like this)
     # TODO: After we are sure the files are safe then we can do random.choice on images i.e. listing images we want with iterdir and is_file()
 
     # add to usage like f"{image_type-api}" or just image_type.
