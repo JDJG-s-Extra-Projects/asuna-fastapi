@@ -77,6 +77,8 @@ async def get_random_image(image_type: str):
     # an online accquitance decided to make this ai version for some reason
     # https://mystb.in/a56e9985c52d7bb3e1?lines=F1-L28
 
+    # use fileResponse with the path to show this.
+
 
 @app.get("/api/{image_type}")
 async def get_random_image_info(image_type: str):
@@ -114,6 +116,8 @@ async def get_endpoints():
 
     return JSONResponse({"allEndpoints": endpoints, "endpointInfo": response, "totalImages": total_images})
 
+    # could definetly use a rewrite to look better and cleaner.
+
 
 @app.get("/images/{image_type}/image/{image_file}")
 async def serve_image(image_type: typing.Optional[str] = None, image_file: typing.Optional[str] = None):
@@ -134,6 +138,7 @@ async def serve_image(image_type: typing.Optional[str] = None, image_file: typin
 
     # an online aqquitance sent me this file made by ai:
     # https://mystb.in/a56e9985c52d7bb3e1?lines=F1-L94
+    # use fileResponse with the path to show this.
 
 
 @app.get("/images")
